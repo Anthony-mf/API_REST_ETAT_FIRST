@@ -1,5 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using API_REST_ETAT_FIRST.Models.EntityFramework;
+using API_REST_ETAT_FIRST.Models.DataManager;
+using API_REST_ETAT_FIRST.Models.Repository;
 
 namespace API_REST_ETAT_FIRST
 {
@@ -11,6 +13,8 @@ namespace API_REST_ETAT_FIRST
 
             builder.Services.AddDbContext<FilmRatingDBContext>(options =>
                 options.UseNpgsql(builder.Configuration.GetConnectionString("FilmRatingsDBContext")));
+
+            builder.Services.AddScoped<IDataRepository<Utilisateur>, UtilisateurManager>();
 
             // Add services to the container.
 
